@@ -1,0 +1,18 @@
+# 依赖与构建产物（注意：`/lib/` 只匹配仓库根的构建输出，
+# 不能写成 `lib/`——那会把 src/paper/lib/ 这些**源码**也忽略掉）
+/node_modules/
+/lib/
+
+# 本地工具缓存与工作区（不入库）
+/.npm-cache/
+/.host-smoke/
+/.host-verify/
+
+# 插件运行时状态（论文仓库里也会生成，这里只是防误提交）
+.paper/
+
+# 杂项
+.DS_Store
+*.swp
+*.swo
+*.log

@@ -1,0 +1,17 @@
+# dsh-thesis bundle patch：向 profile 挂载本插件的唯一一行。
+#
+# 插件行按包名引用：安装为 profile 依赖后，Node 模块解析从 profile 的
+# node_modules 找到本包；运行期依赖（cordis / dsh-*）经 DSH 安装本体的
+# 扁平回退解析。
+#
+# 所有配置项均有出厂默认值；需要定制时为该行补 config（示例）：
+#   - id: paper
+#     name: dsh-thesis
+#     config:
+#       promptGate: true
+#       destructiveGate: true
+#       memoryPath: /var/lib/dsh/paper-memory.db
+#       similarity: { shingle: 4, threshold: 0.25 }
+- insert:
+    - id: paper
+      name: dsh-thesis

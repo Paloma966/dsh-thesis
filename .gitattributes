@@ -1,0 +1,15 @@
+# 统一换行与文本处理：仓库里的源码/文档一律以 LF 入库，
+# 避免 Windows 上检出后产生整文件 diff。二进制资源按二进制处理。
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.zip binary
+*.docx binary
+*.xlsx binary
+*.pptx binary
+*.pdf binary

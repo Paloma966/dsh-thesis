@@ -1,0 +1,82 @@
+{
+  "name": "dsh-thesis",
+  "version": "1.0.0",
+  "description": "论文与答辩全流程助手（DeepSeek Harness 插件）：材料摄取 → 逐题追问 → 文献检索 → 逐章写作与评审 → 原创性自查与合规 → Word/答辩幻灯生产，全流程留痕，并跨会话记住学校规范与导师要求。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    }
+  },
+  "files": [
+    "lib",
+    "skills",
+    "cordis.patch.yml",
+    "README.md",
+    "DESIGN.md",
+    "NOTICE.md",
+    "docs/host-api.md"
+  ],
+  "license": "MIT",
+  "author": "Paloma966",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paloma966/dsh-thesis.git"
+  },
+  "homepage": "https://github.com/Paloma966/dsh-thesis#readme",
+  "bugs": {
+    "url": "https://github.com/Paloma966/dsh-thesis/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis-plugin",
+    "thesis",
+    "graduation",
+    "毕业设计",
+    "论文",
+    "答辩",
+    "GB/T 7714",
+    "原创性自查",
+    "代码演练"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.test.json",
+    "test": "node --test tests/",
+    "test:sandbox": "node --test --test-isolation=none \"tests/**/*.test.ts\" \"tests/**/*.test.mjs\"",
+    "test:e2e": "node tests/e2e/paper-full-flow.mjs",
+    "test:bench": "node tests/e2e/paper-full-flow.mjs",
+    "test:net": "node tests/e2e/paper-lit-real.mjs",
+    "test:host": "node scripts/host-smoke.mjs && node .host-smoke/app/run.mjs",
+    "test:host-load": "node scripts/host-verify.mjs",
+    "audit": "node scripts/audit-surface.mjs",
+    "verify": "npm run build && npm run typecheck && npm run test:sandbox && npm run audit && npm run test:e2e",
+    "prepublishOnly": "node scripts/prepublish-guard.mjs"
+  },
+  "engines": {
+    "node": ">=22.16"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/schemastery": "^3.18.2",
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@deepseek-ai/dsh-tools": "^0.1.0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": { "optional": true },
+    "@deepseek-ai/dsh-tools": { "optional": true }
+  },
+  "devDependencies": {
+    "@deepseek-ai/schemastery": "^3.18.2",
+    "typescript": "^5.9.0"
+  }
+}
